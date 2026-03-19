@@ -9,7 +9,7 @@ Sistema de gerenciamento de pedidos desenvolvido em Go seguindo os princípios d
 
 ## Como rodar
 
-### 1. Subir a infraestrutura (MySQL, RabbitMQ e Migrations)
+### 1. Subir tudo (MySQL, RabbitMQ, Migrations e Aplicação)
 
 ```bash
 docker compose up -d
@@ -19,21 +19,11 @@ Isso irá:
 - Subir o **MySQL** na porta `3306`
 - Subir o **RabbitMQ** na porta `5672` (AMQP) e `15672` (Management UI)
 - Executar as **migrações** automaticamente, criando a tabela `orders`
+- Subir a **aplicação** expondo REST, gRPC e GraphQL
 
-### 2. Instalar dependências
+### 2. (Opcional) Rodar local sem Docker
 
-```bash
-go mod tidy
-```
-
-### 3. Executar a aplicação
-
-```bash
-cd cmd/ordersystem
-go run main.go wire_gen.go
-```
-
-Ou, alternativamente:
+Se quiser rodar a aplicação localmente (fora do Docker), use o `.env` em `cmd/ordersystem`:
 
 ```bash
 cd cmd/ordersystem
